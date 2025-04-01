@@ -14,7 +14,7 @@ public abstract class World extends Model {
 
     public World(){
         agents = new ArrayList<>();
-        observer = new ObserverAgent();
+        observer = new ObserverAgent("Observer", this);
         running = false;
         paused = false;
     }
@@ -27,7 +27,7 @@ public abstract class World extends Model {
         return alive;
     }
 
-    public List<Agents> getAgents(){
+    public List<Agent> getAgents(){
         return agents;
     }
 
