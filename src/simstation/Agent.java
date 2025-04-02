@@ -2,14 +2,15 @@ package simstation;
 
 import java.io.*;
 import mvc.*;
+import java.awt.Point;
 
 public abstract class Agent implements Runnable, Serializable{
-    private String agentName;
+    private final String agentName;
     transient protected Thread myThread;
     private boolean suspended;
     private boolean stopped;
     private int xc, yc;
-    private World world;
+    private final World world;
 
 
     public Agent(String agentName, World world){
@@ -38,8 +39,14 @@ public abstract class Agent implements Runnable, Serializable{
     }
 
     public void setXY(int x, int y){
+        int oldX = xc;
+        int oldY = yc;
         xc = x;
         yc = y;
+
+        Point oldPoint = new Point(oldX, oldY);
+        Point newPoint = new Point(x, y);
+        world.changed(agentName, oldPoint, newPoint); //we need to implement this I think
     }
 
     public void start(){
@@ -68,21 +75,31 @@ public abstract class Agent implements Runnable, Serializable{
 
     public abstract void update();
 
+    protected void onStart() {}
+    protected void onInterrupted() {}
+    protected void onExit() {}
 
     @Override
     public void run(){
-        while(!stopped){
-            try {
-                synchronized(this){
-                    while(suspended){
-                        wait();
+        try {
+            onStart();
+            while(!stopped){
+                try {
+                    synchronized(this){
+                        while(suspended){
+                            wait();
+                        }
                     }
+                    update();
+                    Thread.sleep(250);
+                } catch (InterruptedException e) { 
+                    onInterrupted();
+                    System.err.println("Error Message");
                 }
-                update();
-                Thread.sleep(250);
-            } catch (InterruptedException e) { 
-                System.err.println("Error Message");
             }
+        }
+        finally{
+            onExit();
         }
     }
 
