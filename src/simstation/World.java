@@ -82,7 +82,7 @@ public abstract class World extends Model {
     
 
     public String getStatus(){
-        return "idk what values are here";
+        return "#Agents " + agents.size() + " alive: " + alive + " clock: " + clock;
     }
     
 
@@ -117,5 +117,7 @@ public abstract class World extends Model {
         return null;
     }
 
-
+    public Iterator<Agent> iterator() {
+        return agents.iterator();
+    }
 }

@@ -8,7 +8,8 @@ public class WorldView extends View {
       public WorldView(Model model) {
         super(model);
     }
-
+    
+    @Override
     public void setModel(Model newModel) {
         super.setModel(newModel);
         repaint();
