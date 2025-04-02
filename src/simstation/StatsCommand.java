@@ -7,6 +7,7 @@ public class StatsCommand extends Command {
         super(model);
     }
 
+    @Override
     public void execute() {
         ((World)model).updateStatistics();
     }

@@ -1,5 +1,6 @@
 package simstation;
 
+import java.awt.*;
 import mvc.*;
 
 public class WorldView extends View {
