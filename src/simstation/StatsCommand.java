@@ -9,6 +9,6 @@ public class StatsCommand extends Command {
 
     @Override
     public void execute() {
-        ((World)model).updateStatistics();
+        ((World)model).getStatus();
     }
 }
