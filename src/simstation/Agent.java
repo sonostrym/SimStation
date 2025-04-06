@@ -2,12 +2,11 @@ package simstation;
 
 import java.io.*;
 import mvc.*;
-import java.awt.Point;
 
 public abstract class Agent implements Runnable, Serializable{
     private final String agentName;
     transient protected Thread myThread;
-    private boolean suspended;
+    private boolean paused;
     private boolean stopped;
     private int xc, yc;
     private final World world;
@@ -18,7 +17,7 @@ public abstract class Agent implements Runnable, Serializable{
         this.world = world;
         xc = Utilities.rng.nextInt(World.SIZE);
         yc = Utilities.rng.nextInt(World.SIZE);
-        this.suspended = false;
+        this.paused = false;
         this.stopped = false;
     }
     
@@ -39,19 +38,13 @@ public abstract class Agent implements Runnable, Serializable{
     }
 
     public void setXY(int x, int y){
-        int oldX = xc;
-        int oldY = yc;
         xc = x;
         yc = y;
-
-        Point oldPoint = new Point(oldX, oldY);
-        Point newPoint = new Point(x, y);
-        world.changed(agentName, oldPoint, newPoint); //we need to implement this I think
     }
 
     public void start(){
         stopped = false;
-        suspended = false;
+        paused = false;
         myThread = new Thread(this);
         myThread.start();
     }
@@ -59,17 +52,17 @@ public abstract class Agent implements Runnable, Serializable{
 
     public void stop(){
         stopped = true;
-        if(suspended){
+        if(paused){
             resume();
         }
     }
 
     public synchronized void pause(){
-        suspended = true;
+        paused = true;
     }
 
     public synchronized void resume(){
-        suspended = false;
+        paused = false;
         notify();
     }
 
@@ -86,7 +79,7 @@ public abstract class Agent implements Runnable, Serializable{
             while(!stopped){
                 try {
                     synchronized(this){
-                        while(suspended){
+                        while(paused){
                             wait();
                         }
                     }
