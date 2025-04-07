@@ -3,8 +3,10 @@ package simstation;
 import mvc.*;
 
 public class WorldFactory implements AppFactory {
-    public abstract Model makeModel();
+    public Model makeModel() {
+        return null;
          //Just override this method to return a new instance of your model class.
+    }
 
     public View makeView(Model m) {
         return new WorldView((World) m);
