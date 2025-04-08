@@ -1,12 +1,15 @@
 package simstation;
 
 import java.awt.*;
+
+import javax.swing.*;
 import mvc.*;
 
 public class WorldView extends View {
   
       public WorldView(Model model) {
         super(model);
+        setBorder(BorderFactory.createLineBorder(Color.black));
     }
     
     @Override

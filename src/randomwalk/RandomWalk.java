@@ -7,7 +7,7 @@ import simstation.*;
 class Drunk extends MobileAgent {
 
     public Drunk() {
-        super();
+        super("Drunk");
     }
 
     public void update() {
@@ -24,7 +24,7 @@ class RandomWalkFactory extends WorldFactory {
     public String getTitle() { return "Random Walks";}
 }
 
-public class RandomWalkSimulation extends World {
+class RandomWalkSimulation extends World {
 
     public void populate() {
         for(int i = 0; i < 50; i++)

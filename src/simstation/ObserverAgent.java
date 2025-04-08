@@ -3,7 +3,7 @@ package simstation;
 public class ObserverAgent extends Agent {
 
     public ObserverAgent(String name, World world){
-        super(name, world);
+        super(name);
     }
 
     @Override

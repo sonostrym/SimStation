@@ -14,7 +14,6 @@ public class WorldPanel extends AppPanel {
 
         threadPanel.setLayout(new GridLayout(1, 5));
         threadPanel.setOpaque(false);
-
         JPanel p = new JPanel();
         p.setOpaque(false);
         JButton button = new JButton("Start");
@@ -56,7 +55,7 @@ public class WorldPanel extends AppPanel {
         p.setOpaque(false);
         p.add(threadPanel);
 
-        controlPanel.add(p,  BorderLayout.NORTH);
+        controlPanel.add(p,  BorderLayout.WEST);
     }
 
     public void setModel(Model m) {

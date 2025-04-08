@@ -40,49 +40,62 @@ public abstract class World extends Model {
         running = true;
         paused = false;
         clock = 0;
-        agents.clear();
+        if(agents.size() > 0){
+            for(Agent a: agents){
+                a.stop();
+            }
+            agents.clear();
+        }
         populate();
         alive = agents.size();
         for(Agent a : agents){
             a.start();
         }
-
+        
         observer.start();
         changed();
     }
 
     public void stopAgents(){
-        running = false;
-        for(Agent a: agents){
-            a.stop();
+        if(running){
+            running = false;
+            for(Agent a: agents){
+                a.stop();
+            }
+            observer.stop();
+            changed();
         }
-        observer.stop();
-        changed();
     }
 
     public void pauseAgents(){
-        paused = true;
-        for(Agent a: agents){
-            a.pause();
+        if(!paused){
+            paused = true;
+            for(Agent a: agents){
+                a.pause();
+            }
+            observer.pause();
+            changed(); 
         }
-        observer.pause();
-        changed();
     }
 
     public void resumeAgents(){
-        paused = false;
-        for(Agent a: agents){
-            a.resume();
+        if(paused){
+            paused = false;
+            for(Agent a: agents){
+                a.resume();
+            }
+            observer.resume();
+            changed(); 
         }
-        observer.resume();
-        changed();
     }
 
     public abstract void populate();
     
 
-    public String getStatus(){
-        return "#Agents " + agents.size() + " alive: " + alive + " clock: " + clock;
+    public void getStatus(){
+        Utilities.inform("Agents: " + agents.size() + "\n" +
+                "Alive: " + alive + "\n" +
+                "Clock: " + clock + "\n");
     }
     
 
@@ -120,4 +133,5 @@ public abstract class World extends Model {
     public Iterator<Agent> iterator() {
         return agents.iterator();
     }
+
 }

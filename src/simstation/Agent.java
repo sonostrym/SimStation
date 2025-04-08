@@ -9,16 +9,20 @@ public abstract class Agent implements Runnable, Serializable{
     private boolean paused;
     private boolean stopped;
     private int xc, yc;
-    private final World world;
+    private World world;
 
 
-    public Agent(String agentName, World world){
+    public Agent(String agentName){
         this.agentName = agentName;
-        this.world = world;
+        world = null;
         xc = Utilities.rng.nextInt(World.SIZE);
         yc = Utilities.rng.nextInt(World.SIZE);
         this.paused = false;
         this.stopped = false;
+    }
+
+    public void setWorld(World w){
+        world = w;
     }
     
     public String getName(){
@@ -76,6 +80,7 @@ public abstract class Agent implements Runnable, Serializable{
     public void run(){
         try {
             onStart();
+            // myThread = Thread.currentThread();
             while(!stopped){
                 try {
                     synchronized(this){
@@ -100,3 +105,4 @@ public abstract class Agent implements Runnable, Serializable{
         return myThread != null && myThread.isAlive() && !stopped;
     }
 }
+
