@@ -4,8 +4,8 @@ public abstract class MobileAgent extends Agent {
 
     protected Heading heading;
     
-    public MobileAgent(String agentName, World world) {
-        super(agentName, world);
+    public MobileAgent(String agentName) {
+        super(agentName);
         heading = Heading.random();
     }
 
