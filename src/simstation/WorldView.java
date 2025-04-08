@@ -31,4 +31,8 @@ public class WorldView extends View {
         gc.setColor(Color.RED);
         gc.fillOval(a.getX(), a.getY(), 10, 10);
     }
+    @Override
+    public void update(){
+        repaint();
+    }
 }

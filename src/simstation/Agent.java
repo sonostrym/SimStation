@@ -44,6 +44,7 @@ public abstract class Agent implements Runnable, Serializable{
     public void setXY(int x, int y){
         xc = x;
         yc = y;
+        world.changed();
     }
 
     public void start(){

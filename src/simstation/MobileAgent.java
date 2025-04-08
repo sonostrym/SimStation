@@ -19,16 +19,16 @@ public abstract class MobileAgent extends Agent {
             int newX = oldX;
             int newY = oldY;
             if (heading != null) {
-                switch (heading) {
-                    case NORTH -> newY = oldY - 1;
-                    case SOUTH -> newY = oldY + 1;
-                    case EAST -> newX = oldX + 1;
-                    case WEST -> newX = oldX - 1;
-                    default -> {
-                    }
+                if(heading == Heading.NORTH) {
+                    newY = oldY - 1;
+                } else if (heading == Heading.SOUTH) {
+                    newY = oldY + 1;
+                } else if (heading == Heading.EAST) {
+                    newX = oldX + 1;
+                } else if (heading == Heading.WEST) {
+                    newX = oldX - 1;
                 }
             }
-            // world.changed(agentName, oldX, oldY, newX, newY);
             setXY(newX, newY);
             steps--;
         }

@@ -14,7 +14,7 @@ public abstract class World extends Model {
 
     public World(){
         agents = new ArrayList<>();
-        observer = new ObserverAgent("Observer", this);
+        observer = new ObserverAgent("Observer");
         running = false;
         paused = false;
     }
@@ -49,6 +49,7 @@ public abstract class World extends Model {
         populate();
         alive = agents.size();
         for(Agent a : agents){
+            a.setWorld(this);
             a.start();
         }
         
