@@ -10,9 +10,7 @@ public abstract class MobileAgent extends Agent {
     }
 
     public void move(int steps){
-        String agentName = getName();
         World world = getWorld();
-
         while(steps > 0){
             int oldX = getX();
             int oldY = getY();
@@ -50,6 +48,7 @@ public abstract class MobileAgent extends Agent {
                 }
             }
             setXY(newX, newY);
+            world.changed();
             steps--;
         }
     }
