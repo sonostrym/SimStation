@@ -52,7 +52,7 @@ public abstract class World extends Model {
             a.setWorld(this);
             a.start();
         }
-        
+        observer.setWorld(this);
         observer.start();
         changed();
     }

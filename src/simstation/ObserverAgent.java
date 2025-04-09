@@ -9,8 +9,8 @@ public class ObserverAgent extends Agent {
     @Override
     public void update() {
         try {
-            Thread.sleep(1000);
             getWorld().updateStatistics();
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             System.err.print("Error Message");
         }
