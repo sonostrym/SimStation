@@ -55,7 +55,7 @@ public class WorldPanel extends AppPanel {
         p.setOpaque(false);
         p.add(threadPanel);
 
-        controlPanel.add(p,  BorderLayout.WEST);
+        controlPanel.add(p,  BorderLayout.NORTH);
     }
 
     public void setModel(Model m) {

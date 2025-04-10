@@ -71,28 +71,24 @@ public abstract class Agent implements Runnable, Serializable{
     }
 
     public abstract void update();
-
-    protected void onStart() {}
-    protected void onInterrupted() {}
-    protected void onExit() {}
+    protected synchronized void onStart() {}
+    protected synchronized void onInterrupted() {}
+    protected synchronized void onExit() {}
 
     @Override
     public void run(){
         try {
-            onStart();
             // myThread = Thread.currentThread();
+            //"checkPaused();"
+            onStart();
             while(!stopped){
                 try {
-                    synchronized(this){
-                        while(paused){
-                            wait();
-                        }
-                    }
                     update();
                     Thread.sleep(250);
+                    //"checkPaused();"
                 } catch (InterruptedException e) { 
                     onInterrupted();
-                    System.err.println("Error Message");
+                    Utilities.error(e);
                 }
             }
         }

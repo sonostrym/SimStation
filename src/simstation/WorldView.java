@@ -29,7 +29,7 @@ public class WorldView extends View {
 
     public void drawAgent(Agent a, Graphics gc) {
         gc.setColor(Color.RED);
-        gc.fillOval(a.getX(), a.getY(), 10, 10);
+        gc.fillOval(a.getX()-5, a.getY()-5, 10, 10);
     }
     @Override
     public void update(){
