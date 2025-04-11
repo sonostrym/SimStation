@@ -7,5 +7,10 @@ public class Cooperate extends Strategy {
         return true;
     }
 
+    @Override
+    public String getName() {
+        return "Cooperate";
+    }
+
 }
 
