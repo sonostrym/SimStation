@@ -7,4 +7,9 @@ public class Tit4Tat extends Strategy {
         return !self.getPartnerCheated();
     }
 
+    @Override
+    public String getName() {
+        return "Tit4Tat";
+    }
+
 }
