@@ -6,6 +6,11 @@ public class Cheat extends Strategy {
     public boolean cooperate(Prisoner self) {
         return false;
     }
+  
+    @Override
+    public String getName() {
+        return "Cheat";
+    }
 
 }
 
