@@ -9,5 +9,10 @@ public class RandomlyCooperate extends Strategy {
         return Utilities.rng.nextBoolean();
     }
 
+    @Override
+    public String getName() {
+        return "Random";
+    }
+
 }
 
