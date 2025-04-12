@@ -1,8 +1,9 @@
 package prisonerdilemma;
 
+import mvc.*;
 import simstation.*;
 
-public class Prisoner extends Agent {
+public class Prisoner extends MobileAgent {
     private int fitness = 0;
     private boolean partnerCheated = false;
     private Strategy strategy;
@@ -39,6 +40,7 @@ public class Prisoner extends Agent {
     @Override
     public void update() {
         Prisoner partner = (Prisoner) getWorld().getNeighbor(this,250);
+        World world = getWorld();
         //unsure what radius should be...
 
         if (partner != null) {
@@ -66,6 +68,10 @@ public class Prisoner extends Agent {
             // Tit4Tat
             this.setPartnerCheated(!partnerMove);
             partner.setPartnerCheated(!myMove);
+
+            heading = Heading.random();
+            int steps = Utilities.rng.nextInt(20) + 1;
+            move(steps);
         }
     }
 }
