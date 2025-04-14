@@ -40,7 +40,6 @@ public class Prisoner extends MobileAgent {
     @Override
     public void update() {
         Prisoner partner = (Prisoner) getWorld().getNeighbor(this,250);
-        World world = getWorld();
         //unsure what radius should be...
 
         if (partner != null) {

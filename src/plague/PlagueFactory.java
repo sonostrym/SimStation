@@ -18,8 +18,6 @@ public class PlagueFactory extends WorldFactory {
         return new String[] { "Start", "Pause", "Resume", "Stop", "Stats", "Initial % Infected", "Infection Probability", "Initial Population Size", "Fatality/Recovery Time", "Change Lethality"};
     }
 
-
-
     public String about() {
         return "Plague 1.0";
     }
