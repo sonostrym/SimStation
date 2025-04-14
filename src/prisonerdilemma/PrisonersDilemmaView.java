@@ -14,19 +14,36 @@ public class PrisonersDilemmaView extends WorldView {
     public void drawAgent(Agent a, Graphics gc) {
         Prisoner p = (Prisoner) a;
         int fitness = p.getFitness();
+        String name = p.getStrategy().getName();
 
-        if (fitness >= 90) {
-            gc.setColor(Color.BLUE);
-        } else if (fitness >= 70) {
-            gc.setColor(Color.GREEN);
-        } else if (fitness >= 40) {
-            gc.setColor(Color.YELLOW);
-        } else if (fitness >= 20) {
-            gc.setColor(Color.ORANGE);
+        if (fitness >= 400) {
+            gc.setColor(new Color(255, 0,0));
+        } else if (fitness >= 300) {
+            gc.setColor(new Color(255, 50,50));
+        } else if (fitness >= 200) {
+            gc.setColor(new Color(255, 100,100));
+        } else if (fitness >= 100) {
+            gc.setColor(new Color(255, 150,150));
         } else {
-            gc.setColor(Color.RED);
+            gc.setColor(new Color(255, 200, 200));
         }
 
-        gc.fillOval(p.getX(), p.getY(), 10, 10);
+        gc.fillOval(p.getX()-5, p.getY()-5, 10, 10);
+
+
+        if(name.equals("Cooperate")){
+            gc.setColor(Color.BLUE);
+        } else if(name.equals("Cheat")){
+            gc.setColor(Color.GREEN);
+        } else if(name.equals("Random")){
+            gc.setColor(Color.ORANGE);
+        } else if(name.equals("Tit4Tat")){
+            gc.setColor(Color.MAGENTA);
+        }
+
+        gc.fillOval(p.getX()-3, p.getY()-3, 6, 6);
+
+        gc.setColor(Color.BLACK);
+        gc.drawOval(p.getX()-5, p.getY()-5, 10, 10);
     }
 }

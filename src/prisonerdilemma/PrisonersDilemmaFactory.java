@@ -11,7 +11,8 @@ public class PrisonersDilemmaFactory extends WorldFactory {
     public String[] getHelp() {
         return new String[] {
                 "Click on Stats to see average fitness scores for each strategy." + "\n" +
-                        "The color of the dot (from red to blue) represents how high that prisoners fitness score is."
+                "The color of the dot (from pink to red) represents how high that prisoners fitness score is." + "\n" +
+                "Blue = Cooperate, Green = Cheat, Orange = Random, Magenta = Tit4Tat"
         };
     }
 
