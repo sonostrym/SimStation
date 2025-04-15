@@ -7,7 +7,7 @@ import simstation.*;
 
 public class Patch extends Agent {
     private int energy;
-    private static int growBackRate;
+    public static int growBackRate;
     private static int patchSize = 10;
     private Object lock = new Object();
 
@@ -25,8 +25,8 @@ public class Patch extends Agent {
         return energy;
     }
 
-    public void setGrowBackRate(int growBackRate) {
-        this.growBackRate = growBackRate;
+    public static void setGrowBackRate(int newGrowBackRate) {
+        growBackRate = newGrowBackRate;
     }
 
     public boolean eatMe(Cow cow, int greediness){
@@ -61,5 +61,4 @@ public class Patch extends Agent {
 
     
 }
-
 
