@@ -47,6 +47,7 @@ public class Cow extends MobileAgent {
                 heading = Heading.random();
                 int steps = Utilities.rng.nextInt(5);
                 move(steps);
+                energy -= meadow.getMoveEnergy();
             }
             else{
                 energy -= meadow.getWaitPenalty();
