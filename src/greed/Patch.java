@@ -13,8 +13,6 @@ public class Patch extends Agent {
         super(agentName);
         energy = Utilities.rng.nextInt(100);
         growBackRate = 0;
-        myThread = new Thread(this);
-        myThread.start();
     }
 
     public static int getPatchSize() {
@@ -22,6 +20,11 @@ public class Patch extends Agent {
     }
 
     public int getEnergy(){
+        return energy;
+    }
+
+    public int setEnergy(int newEnergy){
+        energy = newEnergy;
         return energy;
     }
 
