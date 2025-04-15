@@ -105,5 +105,9 @@ public abstract class Agent implements Runnable, Serializable{
     public boolean isAlive(){
         return !stopped;
     }
+
+    public boolean isReady() {
+        return myThread == null;
+    }
 }
 
