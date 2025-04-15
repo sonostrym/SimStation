@@ -19,7 +19,7 @@ public abstract class MobileAgent extends Agent {
             if (heading != null) {
                 if(heading == Heading.NORTH) {
                     if(oldY - 1 < 0){
-                        newY = World.SIZE;
+                        newY = World.SIZE - 1;
                     }
                     else{
                         newY = oldY - 1;
@@ -40,7 +40,7 @@ public abstract class MobileAgent extends Agent {
                     }
                 } else if (heading == Heading.WEST) {
                     if(oldX - 1 < 0){
-                        newX = World.SIZE;
+                        newX = World.SIZE - 1;
                     }
                     else{
                         newX = oldX - 1;

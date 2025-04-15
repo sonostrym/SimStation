@@ -1,7 +1,6 @@
 package greed;
 
 import mvc.*;
-import prisonerdilemma.PrisonersDilemmaView;
 import simstation.*;
 
 public class GreedFactory extends WorldFactory{

@@ -20,7 +20,7 @@ public class Meadow extends World {
 
         for(int i=0; i<dim; i++){
             for(int j=0; j<dim; j++){
-                patches[i][j] = new Patch("Patch" + i + j);
+                patches[i][j] = new Patch("Patch" + i + " - " + j);
             }
         }
     }

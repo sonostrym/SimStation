@@ -21,6 +21,10 @@ public class Patch extends Agent {
         return patchSize;
     }
 
+    public int getEnergy(){
+        return energy;
+    }
+
     public void setGrowBackRate(int growBackRate) {
         this.growBackRate = growBackRate;
     }
@@ -37,12 +41,20 @@ public class Patch extends Agent {
 
     @Override
     public void update() {
-        synchronized(lock) {
-            energy += growBackRate;
-            if (energy > 100) {
-                energy = 100; 
+        try{
+            synchronized(lock) {
+                energy += growBackRate;
+                if (energy > 100) {
+                    energy = 100; 
+                }
+                Thread.sleep(100);
             }
         }
+        catch (InterruptedException e) {
+            System.err.print("Error Message");
+        }
+
+        
     }
 
 
