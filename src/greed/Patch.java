@@ -25,6 +25,10 @@ public class Patch extends Agent {
         return energy;
     }
 
+    public void setEnergy(int newEnergy){
+        energy = newEnergy;
+    }
+
     public static void setGrowBackRate(int newGrowBackRate) {
         growBackRate = newGrowBackRate;
     }

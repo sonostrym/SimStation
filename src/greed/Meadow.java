@@ -60,6 +60,12 @@ public class Meadow extends World {
             cow.setLocation(x, y);
             addAgent(cow);
         }
+
+        for(int i=0; i<dim; i++){
+            for(int j=0; j<dim; j++){
+                patches[i][j].setEnergy(Utilities.rng.nextInt(100));
+            }
+        }
     }
 
 }
