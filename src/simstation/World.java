@@ -135,4 +135,15 @@ public abstract class World extends Model {
         return agents.iterator();
     }
 
+    //checking if agent is ready when you try to call save.
+    @Serial
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        for (Agent a : agents) {
+            if (!a.isReady()) {
+                throw new IOException("Cannot save simulation while agents have been started. Please stop simmulation first.");
+            }
+        }
+        out.defaultWriteObject();
+    }
+
 }
