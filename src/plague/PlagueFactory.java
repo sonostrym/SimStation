@@ -2,7 +2,6 @@ package plague;
 
 import simstation.*;
 import mvc.*;
-import javax.swing.*;
 
 public class PlagueFactory extends WorldFactory {
     public Model makeModel() { return new Population(); }
@@ -10,7 +9,7 @@ public class PlagueFactory extends WorldFactory {
 
     public String[] getHelp() {
         return new String[] {
-                "Click on Stats to the current number of alive agents, the time passed, and percent infected."
+                "Click on Stats to see the current number of alive agents, the time passed, and percent infected."
         };
     }
 
@@ -26,7 +25,7 @@ public class PlagueFactory extends WorldFactory {
         } else if(name.equalsIgnoreCase("Initial Population Size")) {
             return new SetPopulation(model);
         } else if(name.equalsIgnoreCase("Fatality/Recovery Time")) {
-            return new SetLethality(model);
+            return new SetFatality(model);
         }
         return null;
     }
