@@ -11,4 +11,7 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
     JSlider initialInfected, probability, initialPopulation, infectionTime;
     JButton lethality;
 
+    
 }
+
+

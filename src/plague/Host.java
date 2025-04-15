@@ -6,6 +6,7 @@ import simstation.*;
 public class Host extends MobileAgent {
 
     private boolean infected = false;
+    private int timeInfected;
 
     public Host(String agentName) {
         super(agentName);
@@ -17,6 +18,7 @@ public class Host extends MobileAgent {
     public void interact(Host other) {
         if (!this.infected && other.isInfected() && choose(other)) {
             this.setInfected();
+            timeInfected = getWorld().getClock();
         }
     }
 
@@ -34,6 +36,12 @@ public class Host extends MobileAgent {
         Agent other = world.getNeighbor(this,100);
         if (other != null) {
             interact((Host)other);
+        }
+        int time = world.getClock() - timeInfected;
+        if (time >= Population.LETHALITY_TIME) {
+            this.stop();
+        } else {
+            this.infected = false;
         }
         move(1);
     }
