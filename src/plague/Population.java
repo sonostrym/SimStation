@@ -2,13 +2,13 @@ package plague;
 
 import simstation.*;
 import mvc.*;
+import java.util.*;
 
 public class Population extends World {
 
     public static int VIRULENCE = 50; // % chance of infection
-    // public static int RESISTANCE = 2; // % chance of resisting infection // I don't think this is actually used, just an example maybe
-    static int numHosts = 50;
-
+    public static int LETHALITY_TIME = 50;
+    public static int numHosts = 50;
 
     public void populate() {
         for(int i = 0; i < numHosts; i++) {
@@ -16,8 +16,28 @@ public class Population extends World {
         }
     }
 
+    public void setInitialPopulation(Integer value) {
+        numHosts = value;
+        changed();
+    }
+
     public void setVirulence(Integer value) {
         VIRULENCE = value;
+        changed();
+    }
+
+    public void setInitialInfected(Integer value) {
+        for (Agent a : getAgents()) {
+            Host h = (Host) a;
+            for (int i = 0; i <= value; i++) {
+                h.setInfected();
+            }
+        }
+        changed();
+    }
+
+    public void setLethalityTime(Integer value) {
+        LETHALITY_TIME = value;
         changed();
     }
 
@@ -43,4 +63,5 @@ public class Population extends World {
         AppPanel app = new PopulationPanel(new PlagueFactory());
         app.display();
     }
+
 }

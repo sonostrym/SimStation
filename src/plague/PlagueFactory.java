@@ -18,6 +18,19 @@ public class PlagueFactory extends WorldFactory {
         return new String[] { "Start", "Pause", "Resume", "Stop", "Stats", "Initial % Infected", "Infection Probability", "Initial Population Size", "Fatality/Recovery Time", "Change Lethality"};
     }
 
+    public Command makeEditCommand(Model model, String name, Object source) {
+        if(name.equalsIgnoreCase("Initial % Infected")) {
+            return new SetInfected(model);
+        } else if(name.equalsIgnoreCase("Infection Probability")) {
+            return new SetInfectProbability(model);
+        } else if(name.equalsIgnoreCase("Initial Population Size")) {
+            return new SetPopulation(model);
+        } else if(name.equalsIgnoreCase("Fatality/Recovery Time")) {
+            return new SetLethality(model);
+        }
+        return null;
+    }
+
     public String about() {
         return "Plague 1.0";
     }
