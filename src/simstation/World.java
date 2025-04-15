@@ -1,16 +1,20 @@
 package simstation;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serial;
 import java.util.*;
 import mvc.*;
 
 public abstract class World extends Model {
     public static int SIZE = 500;
-    private int clock = 0;
-    private int alive = 0;
-    private List<Agent> agents;
-    private ObserverAgent observer;
-    private boolean running;
-    private boolean paused;
+    protected int clock = 0;
+    protected int alive = 0;
+    protected List<Agent> agents;
+    protected ObserverAgent observer;
+    protected boolean running;
+    protected boolean paused;
+
 
     public World(){
         agents = new ArrayList<>();
@@ -133,6 +137,17 @@ public abstract class World extends Model {
 
     public Iterator<Agent> iterator() {
         return agents.iterator();
+    }
+
+    //checking if agent is ready when you try to call save.
+    @Serial
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        for (Agent a : agents) {
+            if (!a.isReady()) {
+                throw new IOException("Cannot save simulation while agents have been started. Please stop simmulation first.");
+            }
+        }
+        out.defaultWriteObject();
     }
 
 }

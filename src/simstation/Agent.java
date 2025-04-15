@@ -47,6 +47,7 @@ public abstract class Agent implements Runnable, Serializable{
     }
 
     public void start(){
+        if (myThread != null) return; // checking if already started
         stopped = false;
         paused = false;
         myThread = new Thread(this);
@@ -59,6 +60,8 @@ public abstract class Agent implements Runnable, Serializable{
         if(paused){
             resume();
         }
+        System.out.println(getName() + " died.");
+        myThread = null; //agents go to ready state when you stop. 
     }
 
     public synchronized void pause(){
@@ -101,9 +104,12 @@ public abstract class Agent implements Runnable, Serializable{
             onExit();
         }
     }
-
     public boolean isAlive(){
-        return myThread != null && myThread.isAlive() && !stopped;
+        return !stopped;
+    }
+
+    public boolean isReady() {
+        return myThread == null;
     }
 }
 

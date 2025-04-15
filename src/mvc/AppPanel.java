@@ -13,7 +13,7 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener  {
     protected JPanel controlPanel;
     protected JFrame frame;
     public static int FRAME_WIDTH = 1000;
-    public static int FRAME_HEIGHT = 500;
+    public static int FRAME_HEIGHT = 550;
 
     public AppPanel(AppFactory factory) {
 
@@ -26,6 +26,7 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener  {
         this.setLayout(new GridLayout(1, 2));
         this.add(controlPanel);
         this.add(view); 
+
 
         this.frame = new SafeFrame();
         Container pane = frame.getContentPane();

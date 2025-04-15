@@ -2,11 +2,7 @@ package greed;
 
 import mvc.Model;
 import java.awt.*;
-import java.awt.image.TileObserver;
-
-import prisonerdilemma.Prisoner;
 import simstation.Agent;
-import simstation.World;
 import simstation.WorldView;
 
 public class GreedView extends WorldView {

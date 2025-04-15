@@ -67,9 +67,82 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
         pp.setOpaque(false);
         pp.add(initialInfected);
         p.add(pp, BorderLayout.CENTER);
+        sliderPanel.add(p);
+
+        p = new JPanel();
+        pp = new JPanel();
+        p.setLayout(new BorderLayout());
+        p.setOpaque(false);
+        pp.setLayout(new BorderLayout());
+        pp.setOpaque(false);
+        pp.add(new JLabel("Infection Probability"));
+        p.add(pp, BorderLayout.NORTH);
+        pp = new JPanel();
+        pp.setOpaque(false);
+        pp.add(probability);
+        p.add(pp, BorderLayout.CENTER);
+        sliderPanel.add(p);
+
+        p = new JPanel();
+        pp = new JPanel();
+        p.setLayout(new BorderLayout());
+        p.setOpaque(false);
+        pp.setLayout(new BorderLayout());
+        pp.setOpaque(false);
+        pp.add(new JLabel("Initial Population Size"));
+        p.add(pp, BorderLayout.NORTH);
+        pp = new JPanel();
+        pp.setOpaque(false);
+        pp.add(initialPopulation);
+        p.add(pp, BorderLayout.CENTER);
+        sliderPanel.add(p);
+
+        p = new JPanel();
+        pp = new JPanel();
+        p.setLayout(new BorderLayout());
+        p.setOpaque(false);
+        pp.setLayout(new BorderLayout());
+        pp.setOpaque(false);
+        pp.add(new JLabel("Fatality/Recovery Time"));
+        p.add(pp, BorderLayout.NORTH);
+        pp = new JPanel();
+        pp.setOpaque(false);
+        pp.add(infectionTime);
+        p.add(pp, BorderLayout.CENTER);
+        sliderPanel.add(p);
+
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+        topPanel.setOpaque(false);
+        topPanel.add(threadPanel);
+        topPanel.add(sliderPanel);
+        controlPanel.add(topPanel, BorderLayout.NORTH);
 
     }
-    
+
+    public void stateChanged(ChangeEvent e) {
+        if (e.getSource() == initialInfected) {
+            ((Population)model).numInfected = initialInfected.getValue();
+        }
+        if (e.getSource() == probability) {
+            ((Population)model).setVirulence(probability.getValue());
+        }
+        if (e.getSource() == initialPopulation) {
+            ((Population)model).numHosts = initialPopulation.getValue();
+        }
+        if (e.getSource() == infectionTime) {
+            ((Population)model).setLethalityTime(infectionTime.getValue());
+        }
+        model.changed();
+    }
+
+    public void update() {
+        initialInfected.setValue(((Population)model).numInfected);
+        probability.setValue(((Population)model).VIRULENCE);
+        initialPopulation.setValue(((Population)model).numHosts);
+        infectionTime.setValue(((Population)model).LETHALITY_TIME);
+        repaint();
+    }
 }
 
 

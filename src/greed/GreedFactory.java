@@ -10,8 +10,10 @@ public class GreedFactory extends WorldFactory{
 
     public String[] getHelp() {
         return new String[] {
-                "Cow stuff"
-        };
+                "Cows gain energy from any grass patches they stand on. If cows reach 0 energy, they die (cow dots turn white). "
+                + "\n" + "Greed: Adjust a cows willingness to share its grass patch/how much of the grass patch it will consume itself."
+                 + "\n" + "Grow back rate: Adjust the rate at which a grass patch reproduces its energy." + "\n" 
+                + "Move Energy: Adjust the energy required for a cow to keep moving and not die." };
     }
 
     public String about() {

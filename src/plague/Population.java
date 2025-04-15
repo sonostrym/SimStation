@@ -9,6 +9,7 @@ public class Population extends World {
     public static int VIRULENCE = 50; // % chance of infection
     public static int LETHALITY_TIME = 50;
     public static int numHosts = 50;
+    public static int numInfected = 10;
     public static boolean FATAL = true;
 
     public void populate() {
@@ -28,6 +29,7 @@ public class Population extends World {
     }
 
     public void setInitialInfected(Integer value) {
+        numInfected = value;
         for (Agent a : getAgents()) {
             Host h = (Host) a;
             for (int i = 0; i <= value; i++) {
