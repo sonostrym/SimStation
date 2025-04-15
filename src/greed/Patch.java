@@ -1,7 +1,5 @@
 package greed;
 
-import java.util.ArrayList;
-import java.util.List;
 import mvc.*;
 import simstation.*;
 
@@ -14,7 +12,9 @@ public class Patch extends Agent {
     public Patch(String agentName) {
         super(agentName);
         energy = Utilities.rng.nextInt(100);
-        growBackRate = 1;
+        growBackRate = 0;
+        myThread = new Thread(this);
+        myThread.start();
     }
 
     public static int getPatchSize() {

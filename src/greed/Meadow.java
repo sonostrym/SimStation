@@ -62,4 +62,21 @@ public class Meadow extends World {
         }
     }
 
+    @Override
+    public void stopAgents(){
+        if(running){
+            running = false;
+            for(Agent a: agents){
+                a.stop();
+            }
+            observer.stop();
+            for(int i=0; i<dim; i++){
+                for(int j=0; j<dim; j++){
+                    patches[i][j].stop();
+                }
+            }
+            changed();
+        }
+    }
+
 }
