@@ -1,8 +1,9 @@
 package prisonerdilemma;
 
 import mvc.Utilities;
+import java.io.Serializable;
 
-public class RandomlyCooperate extends Strategy {
+public class RandomlyCooperate extends Strategy implements Serializable {
   
     @Override
     public boolean cooperate(Prisoner self) {
