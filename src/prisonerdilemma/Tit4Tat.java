@@ -1,6 +1,8 @@
 package prisonerdilemma;
 
-public class Tit4Tat extends Strategy {
+import java.io.Serializable;
+
+public class Tit4Tat extends Strategy implements Serializable {
   
     @Override
     public boolean cooperate(Prisoner self) {
