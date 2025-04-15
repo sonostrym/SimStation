@@ -5,8 +5,8 @@ import mvc.*;
 
 public class Cow extends MobileAgent {
 
-    private static int energy;
-    private static int greediness;
+    private int energy;
+    public static int greediness;
 
     public Cow(String agentName) {
         super(agentName);
@@ -22,7 +22,7 @@ public class Cow extends MobileAgent {
         energy = moveEnergy;
     }
 
-    public void setGreediness(int greed){
+    public static void setGreediness(int greed){
         greediness = greed;
     }
 

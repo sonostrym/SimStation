@@ -6,7 +6,7 @@ import simstation.*;
 public class Meadow extends World {
     private Patch[][] patches;
     private int waitPenalty;
-    private int moveEnergy;
+    public static int moveEnergy;
     private int numCows;
     private int dim;
 
@@ -39,6 +39,11 @@ public class Meadow extends World {
 
     public int getMoveEnergy(){
         return moveEnergy;
+    }
+
+    public static void setMoveEnergy(int newMoveEnergy){
+        moveEnergy = newMoveEnergy;
+
     }
 
     public int getWaitPenalty(){
