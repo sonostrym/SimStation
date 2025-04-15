@@ -12,6 +12,9 @@ public class Cow extends MobileAgent {
         super(agentName);
         energy = 100;
         greediness = 25;
+        int x = Utilities.rng.nextInt(Meadow.dim);
+        int y = Utilities.rng.nextInt(Meadow.dim);
+        setLocation(x, y);
     }
 
     public void setLocation(int x, int y){

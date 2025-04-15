@@ -8,7 +8,7 @@ public class Meadow extends World {
     private int waitPenalty;
     public static int moveEnergy;
     private int numCows;
-    private int dim;
+    public static int dim;
 
     public Meadow(){
         super();
@@ -21,8 +21,11 @@ public class Meadow extends World {
         for(int i=0; i<dim; i++){
             for(int j=0; j<dim; j++){
                 patches[i][j] = new Patch("Patch" + i + " - " + j);
+                patches[i][j].setWorld(this);
             }
         }
+
+        startPatchThreads();
     }
 
     public Patch[][] getPatches(){
@@ -55,9 +58,6 @@ public class Meadow extends World {
     public void populate() {
         for(int i=0; i<numCows; i++){
             Cow cow = new Cow("Cow" + i);
-            int x = Utilities.rng.nextInt(dim);
-            int y = Utilities.rng.nextInt(dim);
-            cow.setLocation(x, y);
             addAgent(cow);
         }
 
@@ -82,6 +82,26 @@ public class Meadow extends World {
                 }
             }
             changed();
+        }
+    }
+
+    public void startPatchThreads() {
+        for (int row = 0; row < patches.length; row++) {
+            int finalRow = row;
+            Thread t = new Thread(() -> {
+                while (true) {
+                    for (int col = 0; col < patches[finalRow].length; col++) {
+                        patches[finalRow][col].update();
+                    }
+                    try {
+                        Thread.sleep(100); 
+                    } catch (InterruptedException e) {
+                        Utilities.error(e);
+                        return;
+                    }
+                }
+            });
+            t.start();
         }
     }
 
