@@ -59,6 +59,7 @@ public abstract class Agent implements Runnable, Serializable{
         if(paused){
             resume();
         }
+        System.out.println(getName() + " died.");
     }
 
     public synchronized void pause(){
@@ -101,9 +102,8 @@ public abstract class Agent implements Runnable, Serializable{
             onExit();
         }
     }
-
     public boolean isAlive(){
-        return myThread != null && myThread.isAlive() && !stopped;
+        return !stopped;
     }
 }
 
