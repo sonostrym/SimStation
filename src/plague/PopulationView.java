@@ -28,6 +28,12 @@ public class PopulationView extends WorldView {
             gc.setColor(Color.GREEN);
         }
 
+        if(!h.isAlive()){
+            gc.setColor(Color.WHITE);
+        }
+
         gc.fillOval(h.getX(), h.getY(), 10, 10);
+        gc.setColor(Color.BLACK);
+        gc.drawOval(h.getX(), h.getY(), 10, 10);
     }
 }
