@@ -6,6 +6,7 @@ import mvc.*;
 public class PlagueFactory extends WorldFactory {
     public Model makeModel() { return new Population(); }
     public String getTitle() { return "Plague"; }
+    public View makeView(Model m) { return new PopulationView(m);}
 
     public String[] getHelp() {
         return new String[] {
