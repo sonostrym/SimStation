@@ -1,7 +1,5 @@
 package prisonerdilemma;
 
-import java.io.Serializable;
-
 public class Cooperate extends Strategy {
   
     @Override
