@@ -14,8 +14,11 @@ public class Population extends World {
 
     public void populate() {
         for(int i = 0; i < numHosts; i++) {
-            addAgent(new Host("Host"));
+            Host h = new Host("Host" + i);
+            addAgent(h);
         }
+
+        setInitialInfected(numInfected);
     }
 
     public void setInitialPopulation(Integer value) {
@@ -30,11 +33,9 @@ public class Population extends World {
 
     public void setInitialInfected(Integer value) {
         numInfected = value;
-        for (Agent a : getAgents()) {
-            Host h = (Host) a;
-            for (int i = 0; i <= value; i++) {
-                h.setInfected();
-            }
+        for(int i = 0; i < numInfected; i++){
+            Host h = (Host) getAgents().get(i);
+            h.setInfected();
         }
         changed();
     }

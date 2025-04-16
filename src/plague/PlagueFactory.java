@@ -19,7 +19,17 @@ public class PlagueFactory extends WorldFactory {
     }
 
     public Command makeEditCommand(Model model, String name, Object source) {
-        if(name.equalsIgnoreCase("Initial % Infected")) {
+        if(name.equalsIgnoreCase("start")) {
+            return new StartCommand(model);
+        } else if(name.equalsIgnoreCase("pause")) {
+            return new SuspendCommand(model);
+        } else if(name.equalsIgnoreCase("resume")) {
+            return new ResumeCommand(model);
+        } else if(name.equalsIgnoreCase("Stop")) {
+            return new StopCommand(model);
+        } else if(name.equalsIgnoreCase("Stats")) {
+            return new StatsCommand(model);
+        } else if(name.equalsIgnoreCase("Initial % Infected")) {
             return new SetInfected(model);
         } else if(name.equalsIgnoreCase("Infection Probability")) {
             return new SetInfectProbability(model);

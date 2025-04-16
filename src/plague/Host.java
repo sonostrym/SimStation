@@ -10,6 +10,8 @@ public class Host extends MobileAgent {
 
     public Host(String agentName) {
         super(agentName);
+        setXY(Utilities.rng.nextInt(World.SIZE),
+                Utilities.rng.nextInt(World.SIZE));
     }
 
     public boolean choose(Host host) {
@@ -33,7 +35,7 @@ public class Host extends MobileAgent {
     @Override
     public void update() {
         World world = getWorld();
-        Agent other = world.getNeighbor(this,100);
+        Agent other = world.getNeighbor(this,20);
         if (other != null) {
             interact((Host)other);
         }
