@@ -1,7 +1,6 @@
 package prisonerdilemma;
 
 import mvc.Utilities;
-import java.io.Serializable;
 
 public class RandomlyCooperate extends Strategy {
   

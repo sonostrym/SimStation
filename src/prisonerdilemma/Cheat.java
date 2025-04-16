@@ -1,7 +1,5 @@
 package prisonerdilemma;
 
-import java.io.Serializable;
-
 public class Cheat extends Strategy {
   
     @Override
