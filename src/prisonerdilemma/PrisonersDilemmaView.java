@@ -17,15 +17,15 @@ public class PrisonersDilemmaView extends WorldView {
         String name = p.getStrategy().getName();
 
         if (fitness >= 400) {
-            gc.setColor(new Color(255, 0,0));
+            gc.setColor(new Color(9, 9, 9));
         } else if (fitness >= 300) {
-            gc.setColor(new Color(255, 50,50));
+            gc.setColor(new Color(60, 61, 61));
         } else if (fitness >= 200) {
-            gc.setColor(new Color(255, 100,100));
+            gc.setColor(new Color(130, 148, 148));
         } else if (fitness >= 100) {
-            gc.setColor(new Color(255, 150,150));
+            gc.setColor(new Color(180, 199, 199));
         } else {
-            gc.setColor(new Color(255, 200, 200));
+            gc.setColor(new Color(251, 252, 251));
         }
 
         gc.fillOval(p.getX()-5, p.getY()-5, 10, 10);
