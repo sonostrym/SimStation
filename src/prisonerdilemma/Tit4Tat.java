@@ -1,7 +1,5 @@
 package prisonerdilemma;
 
-import java.io.Serializable;
-
 public class Tit4Tat extends Strategy {
   
     @Override
