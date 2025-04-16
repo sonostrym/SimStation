@@ -56,14 +56,14 @@ public class Population extends World {
                 totalInfected++;
             }
         }
-        return getAgents().size() / totalInfected;
+        return (totalInfected / getAgents().size()) * 100.0;
     }
 
     @Override
     public void getStatus() {
         Utilities.inform("Agents: " + getAgents().size() + "\n" +
                 "Clock: " + getClock() + "\n" +
-                "Infected: " + percentInfected() + "\n");
+                "% Infected: " + percentInfected() + "\n");
     }
 
     public static void main(String[] args) {
