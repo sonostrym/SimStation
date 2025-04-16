@@ -2,7 +2,7 @@ package prisonerdilemma;
 
 import java.io.Serializable;
 
-public class Cooperate extends Strategy implements Serializable {
+public class Cooperate extends Strategy {
   
     @Override
     public boolean cooperate(Prisoner self) {
