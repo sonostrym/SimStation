@@ -18,7 +18,7 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
     public PopulationPanel(PlagueFactory factory) {
         super(factory);
 
-        sliderPanel.setLayout(new GridLayout(6, 1));
+        sliderPanel.setLayout(new GridLayout(4, 1));
         sliderPanel.setOpaque(false);
 
         initialInfected = new JSlider(JSlider.HORIZONTAL, 0, 100, 25);
@@ -59,7 +59,6 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
         JPanel pp = new JPanel();
         p.setLayout(new BorderLayout());
         p.setOpaque(false);
-        pp.setLayout(new BorderLayout());
         pp.setOpaque(false);
         pp.add(new JLabel("Initial Infected"));
         p.add(pp, BorderLayout.NORTH);
@@ -73,7 +72,6 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
         pp = new JPanel();
         p.setLayout(new BorderLayout());
         p.setOpaque(false);
-        pp.setLayout(new BorderLayout());
         pp.setOpaque(false);
         pp.add(new JLabel("Infection Probability"));
         p.add(pp, BorderLayout.NORTH);
@@ -87,7 +85,6 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
         pp = new JPanel();
         p.setLayout(new BorderLayout());
         p.setOpaque(false);
-        pp.setLayout(new BorderLayout());
         pp.setOpaque(false);
         pp.add(new JLabel("Initial Population Size"));
         p.add(pp, BorderLayout.NORTH);
@@ -101,7 +98,6 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
         pp = new JPanel();
         p.setLayout(new BorderLayout());
         p.setOpaque(false);
-        pp.setLayout(new BorderLayout());
         pp.setOpaque(false);
         pp.add(new JLabel("Fatality/Recovery Time"));
         p.add(pp, BorderLayout.NORTH);
