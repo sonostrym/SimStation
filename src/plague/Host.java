@@ -39,16 +39,15 @@ public class Host extends MobileAgent {
         if (other != null) {
             interact((Host)other);
         }
-        if(infected){
-            int time = world.getClock() - timeInfected;
-            if (time >= Population.LETHALITY_TIME) {
-                if (Population.FATAL) {
-                    this.stop();
-                } else {
-                    this.infected = false;
-                }
+        int time = world.getClock() - timeInfected;
+
+        if (time >= Population.LETHALITY_TIME) {
+            if (Population.FATAL) {
+                this.stop();
+            } else {
+                this.infected = false;
             }
         }
-        move(1);
+        move(2);
     }
 }
