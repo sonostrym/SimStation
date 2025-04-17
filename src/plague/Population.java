@@ -23,11 +23,13 @@ public class Population extends World {
 
     public void setInitialPopulation(Integer value) {
         numHosts = value;
+        System.out.println("Initial Population: " + numHosts);
         changed();
     }
 
     public void setVirulence(Integer value) {
         VIRULENCE = value;
+        System.out.println("Infection Probability: " + VIRULENCE);
         changed();
     }
 
@@ -37,11 +39,13 @@ public class Population extends World {
             Host h = (Host) getAgents().get(i);
             h.setInfected();
         }
+        System.out.println("Hosts infected: " + numInfected);
         changed();
     }
 
     public void setLethalityTime(Integer value) {
         LETHALITY_TIME = value;
+        System.out.println("Fatal/Recovery Time: " + LETHALITY_TIME);
         changed();
     }
 
