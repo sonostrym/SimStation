@@ -1,5 +1,7 @@
 package plague;
 
+import greed.Cow;
+import greed.Meadow;
 import simstation.*;
 
 import javax.swing.*;
@@ -57,7 +59,16 @@ public class PopulationPanel extends WorldPanel implements ChangeListener, Actio
         probability.addChangeListener(this);
         initialPopulation.addChangeListener(this);
         infectionTime.addChangeListener(this);
-        lethality.addActionListener(this);
+        
+        lethality.addActionListener(e -> {
+            ((Population) model).changeFatal();
+
+            if (((Population) model).checkFatal()) {
+                lethality.setText("Fatal");
+            } else {
+                lethality.setText("Not Fatal");
+            }
+        });
 
         JPanel p = new JPanel();
         JPanel pp = new JPanel();
@@ -149,19 +160,6 @@ public class PopulationPanel extends WorldPanel implements ChangeListener, Actio
         model.changed();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == lethality) {
-            ((Population) model).changeFatal();
-        }
-        if (((Population) model).checkFatal()) {
-            lethality.setText("Fatal");
-        } else {
-            lethality.setText("Not Fatal");
-        }
-        model.changed();
-    }
-
     public void update() {
         initialInfected.setValue(((Population)model).numInfected);
         probability.setValue(((Population)model).VIRULENCE);
@@ -170,4 +168,3 @@ public class PopulationPanel extends WorldPanel implements ChangeListener, Actio
         repaint();
     }
 }
-
