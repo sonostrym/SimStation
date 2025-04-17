@@ -6,10 +6,11 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
-
-public class PopulationPanel extends WorldPanel implements ChangeListener {
+public class PopulationPanel extends WorldPanel implements ChangeListener, ActionListener  {
 
     JPanel sliderPanel = new JPanel();
     JSlider initialInfected, probability, initialPopulation, infectionTime;
@@ -18,7 +19,7 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
     public PopulationPanel(PlagueFactory factory) {
         super(factory);
 
-        sliderPanel.setLayout(new GridLayout(4, 1));
+        sliderPanel.setLayout(new GridLayout(5, 1));
         sliderPanel.setOpaque(false);
 
         initialInfected = new JSlider(JSlider.HORIZONTAL, 0, 100, 25);
@@ -43,17 +44,20 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
         initialPopulation.setPaintLabels(true);
         initialPopulation.setLabelTable(initialPopulation.createStandardLabels(10));
 
-        infectionTime = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
-        infectionTime.setMinorTickSpacing(1);
+        infectionTime = new JSlider(JSlider.HORIZONTAL, 0, 200, 100);
+        //infectionTime.setMinorTickSpacing(1);
         infectionTime.setMajorTickSpacing(3);
         infectionTime.setPaintTicks(true);
         infectionTime.setPaintLabels(true);
-        infectionTime.setLabelTable(infectionTime.createStandardLabels(10));
+        infectionTime.setLabelTable(infectionTime.createStandardLabels(20));
+
+        lethality = new JButton("Fatal"); // this needs to change the text to 'Fatal' when pressed
 
         initialInfected.addChangeListener(this);
         probability.addChangeListener(this);
         initialPopulation.addChangeListener(this);
         infectionTime.addChangeListener(this);
+        lethality.addActionListener(this);
 
         JPanel p = new JPanel();
         JPanel pp = new JPanel();
@@ -107,6 +111,18 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
         p.add(pp, BorderLayout.CENTER);
         sliderPanel.add(p);
 
+        p = new JPanel();
+        pp = new JPanel();
+        p.setLayout(new BorderLayout());
+        p.setOpaque(false);
+        pp.setOpaque(false);
+        p.add(pp, BorderLayout.NORTH);
+        pp = new JPanel();
+        pp.setOpaque(false);
+        pp.add(lethality);
+        p.add(pp, BorderLayout.CENTER);
+        sliderPanel.add(p);
+
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
         topPanel.setOpaque(false);
@@ -129,6 +145,20 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
         if (e.getSource() == infectionTime) {
             ((Population)model).setLethalityTime(infectionTime.getValue());
         }
+
+        model.changed();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == lethality) {
+            ((Population) model).changeFatal();
+        }
+        if (((Population) model).checkFatal()) {
+            lethality.setText("Fatal");
+        } else {
+            lethality.setText("Not Fatal");
+        }
         model.changed();
     }
 
@@ -140,5 +170,4 @@ public class PopulationPanel extends WorldPanel implements ChangeListener {
         repaint();
     }
 }
-
 
