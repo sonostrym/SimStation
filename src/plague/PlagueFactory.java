@@ -36,6 +36,8 @@ public class PlagueFactory extends WorldFactory {
         } else if(name.equalsIgnoreCase("Initial Population Size")) {
             return new SetPopulation(model);
         } else if(name.equalsIgnoreCase("Fatality/Recovery Time")) {
+            return new SetLethalTime(model);
+        } else if(name.equalsIgnoreCase("Change Lethality")) {
             return new SetFatality(model);
         }
         return null;
