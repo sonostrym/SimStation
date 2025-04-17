@@ -46,8 +46,15 @@ public class Population extends World {
     }
 
     public void changeFatal() {
-        FATAL = false;
+        FATAL = !FATAL;
+        System.out.println("Fatality Toggled: " + FATAL); // just for feedback
+        changed();
     }
+
+    public boolean checkFatal() {
+        return FATAL;
+    }
+
     private double percentInfected() {
         double totalInfected = 0.0;
         for (Agent a : getAgents()) {
